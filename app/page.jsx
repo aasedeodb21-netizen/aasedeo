@@ -30,7 +30,7 @@ export default function Page() {
                 <ContextAlert className="mb-6" />
                 <h1 className="mb-4">AASE-EMIS Dashboard</h1>
                 <p className="mb-6 text-lg">Get started with Next.js and Netlify in seconds.</p>
-                <Link href="https://docs.netlify.com/frameworks/next-js/overview/" className="btn btn-lg sm:min-w-64">
+                <Link href="https://sites.google.com/view/aasedeo-user-login/staff-login/" className="btn btn-lg sm:min-w-64">
                     Read the Docs
                 </Link>
             </section>
