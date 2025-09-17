@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { Card } from 'components/card';
 import { ContextAlert } from 'components/context-alert';
 import { Markdown } from 'components/markdown';
@@ -24,27 +25,21 @@ And as always with dynamic content, beware of layout shifts & flicker! (here, we
 const ctx = getNetlifyContext();
 
 export default function Page() {
+    const router = useRouter();
+
+    // Redirect homepage to Google Sites staff login
+    useEffect(() => {
+        router.replace('https://sites.google.com/view/aasedeo-user-login/staff-login/');
+    }, [router]);
+
+    // Optional: display a "Redirecting..." message briefly
     return (
-        <div className="flex flex-col gap-12 sm:gap-16">
-            <section>
-                <ContextAlert className="mb-6" />
-                <h1 className="mb-4">AASE-EMIS Dashboard</h1>
-                <p className="mb-6 text-lg">Get started with Authentic Data from AASEDEO EMIS.</p>
-                <Link href="https://sites.google.com/view/aasedeo-user-login/staff-login/" className="btn btn-lg sm:min-w-64">
-                    Staff Login
-                </Link>
-            </section>
-            {!!ctx && (
-                <section className="flex flex-col gap-4">
-                    <Markdown content={contextExplainer} />
-                    <RuntimeContextCard />
-                </section>
-            )}
-            <section className="flex flex-col gap-4">
-                <Markdown content={preDynamicContentExplainer} />
-                <RandomQuote />
-                <Markdown content={postDynamicContentExplainer} />
-            </section>
+        <div className="flex flex-col gap-12 sm:gap-16 p-6">
+            <h1 className="text-2xl font-bold">Redirecting to Staff Login...</h1>
+            <p>If you are not redirected automatically, <a 
+                href="https://sites.google.com/view/aasedeo-user-login/staff-login/" 
+                className="text-blue-600 underline">click here</a>.
+            </p>
         </div>
     );
 }
